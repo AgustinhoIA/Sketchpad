@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    margin: 0;
+    height: 100vh;
+    align-items: stretch;  
+}
+.options-menu {
+    flex: 1;
+    flex-basis: auto;
+    background-color: #403050;
+    border-right: solid #edeaf1 1px;
+    min-width: fit-content;
+    max-width: 250px;
+    min-width: 100px;
+}
+
+.sketchpad-frame {
+    display: flex;
+    flex: 4;
+    background-color: #d2a5d2;
+    width: auto;
+    align-items: center;
+    justify-content: space-around;
+    padding: 50px;
+}
+
+.sketchpad-frame > .frame {
+    flex: inherit;
+    border: 0;
+    margin: 0;
+    max-width: 250px;
+    max-height: 250px;
+    min-width: 500px;
+    min-height: 500px;
+    border: solid black;
+    align-self: stretch;
+    flex: 1;
+    background-color: lightgreen;
+}
+
