@@ -2,7 +2,6 @@ body {
     display: flex;
     margin: 0;
     height: 100vh;
-    align-items: stretch;  
 }
 .options-menu {
     flex: 1;
@@ -14,7 +13,8 @@ body {
     min-width: 100px;
 }
 
-.sketchpad-frame {
+#sketchpadFrame {
+    box-sizing: border-box;
     display: flex;
     flex: 4;
     background-color: #d2a5d2;
@@ -24,17 +24,30 @@ body {
     padding: 50px;
 }
 
-.sketchpad-frame > .frame {
+#sketchpadFrame > .frame {
     flex: inherit;
     border: 0;
     margin: 0;
-    max-width: 250px;
-    max-height: 250px;
-    min-width: 500px;
-    min-height: 500px;
-    border: solid black;
+    height: 550px;
+    width: 550px;
+    max-width: 550px;
+    max-height: 550px;
+    border: solid black 1px;
     align-self: stretch;
     flex: 1;
+    box-sizing: border-box;
     background-color: lightgreen;
-}
 
+}
+ .row {
+    box-sizing: border-box;
+    border: solid black 1px;
+    min-width: 10px;
+    min-height: 10px;
+    height: 20%;
+ }
+
+ .column {
+    border: solid red 1px;
+    box-sizing: border-box;
+ }
