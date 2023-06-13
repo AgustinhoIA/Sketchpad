@@ -19,15 +19,29 @@ const divcolumn = 0
 
 */
 function divstest() {
+    let columns = 0
     let divs = 0
     let gridSize = 5
     while(divs < gridSize) {
         const newDiv = document.createElement('div');
+        let rowId = `a${divs}`
         newDiv.classList.add('row');
-        newDiv.setAttribute('id', divs);
+        newDiv.setAttribute('id', `a${divs}`);
         sketchpadFrame.appendChild(newDiv);
-        divs++;
         console.log(divs);
+        const rowDiv = document.querySelector(`#a${divs}`);
+        while(columns < gridSize) {
+            const newCol = document.createElement('div')
+            newCol.classList.add(`columna${columns}rowa${divs}`);
+            rowDiv.appendChild(newCol);
+            columns++
+        }
+        divs++;
+        columns = 0
     } 
     return 0; }  
 divstest()
+const gridSqr = document.querySelector('.column');
+gridSqr.addEventListener('mouseover', () => {
+    gridSqr.style.cssText = 'background-color: black'
+})
