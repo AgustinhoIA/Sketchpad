@@ -33,6 +33,7 @@ function divstest() {
         while(columns < gridSize) {
             const newCol = document.createElement('div')
             newCol.classList.add(`columna${columns}rowa${divs}`);
+            newCol.classList.add('column')
             rowDiv.appendChild(newCol);
             columns++
         }
@@ -41,7 +42,9 @@ function divstest() {
     } 
     return 0; }  
 divstest()
-const gridSqr = document.querySelector('.column');
-gridSqr.addEventListener('mouseover', () => {
-    gridSqr.style.cssText = 'background-color: black'
+const gridSqr = document.querySelectorAll('column');
+gridSqr.forEach(column => {
+column.addEventListener('mouseover', function(e) {
+e.target.style.background = 'black';
+})
 })
