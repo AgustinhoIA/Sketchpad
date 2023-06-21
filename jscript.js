@@ -42,9 +42,8 @@ function divstest() {
     } 
     return 0; }  
 divstest()
-const gridSqr = document.querySelectorAll('column');
+const gridSqr = document.querySelectorAll('.column');
 gridSqr.forEach(column => {
-column.addEventListener('mouseover', function(e) {
-e.target.style.background = 'black';
-})
-})
+    column.addEventListener('mouseover', function(e) {
+    column.style.background = 'black'; })
+});
