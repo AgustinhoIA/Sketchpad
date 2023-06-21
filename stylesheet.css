@@ -32,7 +32,6 @@ body {
     width: 550px;
     max-width: 550px;
     max-height: 550px;
-    border: solid black 1px;
     align-self: stretch;
     flex: 1;
     box-sizing: border-box;
@@ -42,17 +41,14 @@ body {
  .row {
     display: flex;
     box-sizing: border-box;
-    border: solid black 1px;
     min-width: 10px;
     min-height: 10px;
-    height: 20%;
+    height: 3.125%;
     justify-content: stretch;
  }
 
  .column {
-    border: solid red 1px;
     box-sizing: border-box;
     height: 100%;
     width: 20%;
-
  }

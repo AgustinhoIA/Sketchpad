@@ -18,10 +18,10 @@ const divcolumn = 0
     once the grid works fine, the individual squares should change background color when hoover over.
 
 */
-function divstest() {
+function makeGrid() {
     let columns = 0
     let divs = 0
-    let gridSize = 5
+    let gridSize = 32
     while(divs < gridSize) {
         const newDiv = document.createElement('div');
         let rowId = `a${divs}`
@@ -41,9 +41,12 @@ function divstest() {
         columns = 0
     } 
     return 0; }  
-divstest()
+makeGrid()
+
 const gridSqr = document.querySelectorAll('.column');
 gridSqr.forEach(column => {
     column.addEventListener('mouseover', function(e) {
     column.style.background = 'black'; })
+    column.addEventListener('click', function(e) {
+        column.style.background = 'black'; })
 });
