@@ -1,7 +1,8 @@
 const sketchpadFrame = document.querySelector("#sketchpadFrame > .frame");
 
-const divRow = 0
-const divcolumn = 0
+const divRow = 0;
+const divcolumn = 0;
+let gridSize = 32;
 
 /* function CreateRow {
     const newDiv = document.createElement('div');
@@ -19,23 +20,20 @@ const divcolumn = 0
 
 */
 function makeGrid() {
-    let columns = 0
-    let divs = 0
-    let gridSize = 32
+    let columns = 0;
+    let divs = 0;
+    
     while(divs < gridSize) {
         const newDiv = document.createElement('div');
-        let rowId = `a${divs}`
         newDiv.classList.add('row');
         newDiv.setAttribute('id', `a${divs}`);
         sketchpadFrame.appendChild(newDiv);
-        console.log(divs);
         const rowDiv = document.querySelector(`#a${divs}`);
         while(columns < gridSize) {
-            const newCol = document.createElement('div')
-            newCol.classList.add(`columna${columns}rowa${divs}`);
-            newCol.classList.add('column')
+            const newCol = document.createElement('div');
+            newCol.classList.add('column');
             rowDiv.appendChild(newCol);
-            columns++
+            columns++;
         }
         divs++;
         columns = 0
@@ -46,7 +44,7 @@ makeGrid()
 const gridSqr = document.querySelectorAll('.column');
 gridSqr.forEach(column => {
     column.addEventListener('mouseover', function(e) {
-    column.style.background = 'black'; })
+    column.style.background = 'black'; });
     column.addEventListener('click', function(e) {
         column.style.background = 'black'; })
 });
