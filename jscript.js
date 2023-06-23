@@ -42,15 +42,23 @@ function makeGrid() {
 makeGrid()
 
 const gridSqr = document.querySelectorAll('.column');
+
+let mouseDown = 0;
+document.body.onmousedown = function() {
+    ++mouseDown;
+};
+
 gridSqr.forEach(column => {
-column.addEventListener('mousedown', () => {
-    column.addEventListener('mouseleave', () => {
-        column.style.background = 'black'; });
-    })
+    if(mouseDown) {
+        column.addEventListener('mouseenter', () => {
+            column.style.background = 'black'; });
+    }});
+
+    
     
     /*column.addEventListener('click', function(e) {
         e.addEventListener('mouseover', function(f) {
             f.style.background = 'black';})
         })
         column.style.background = 'black'; })*/
-});
+
