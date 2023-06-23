@@ -43,8 +43,14 @@ makeGrid()
 
 const gridSqr = document.querySelectorAll('.column');
 gridSqr.forEach(column => {
-    column.addEventListener('mouseover', function(e) {
-    column.style.background = 'black'; });
-    column.addEventListener('click', function(e) {
-        column.style.background = 'black'; })
+column.addEventListener('mousedown', () => {
+    column.addEventListener('mouseleave', () => {
+        column.style.background = 'black'; });
+    })
+    
+    /*column.addEventListener('click', function(e) {
+        e.addEventListener('mouseover', function(f) {
+            f.style.background = 'black';})
+        })
+        column.style.background = 'black'; })*/
 });
