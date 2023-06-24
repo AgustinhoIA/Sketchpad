@@ -44,15 +44,26 @@ makeGrid()
 const gridSqr = document.querySelectorAll('.column');
 
 let mouseDown = 0;
-document.body.onmousedown = function() {
-    ++mouseDown;
-};
+document.body.addEventListener('mousedown', function() {
+    
+    console.log(mouseDown);
+})
+document.body.addEventListener('mouseup', function() {
+    mouseDown = 0;
+    console.log(mouseDown);
+});
 
-gridSqr.forEach(column => {
-    if(mouseDown) {
+document.addEventListener("mousedown", function() {
+    gridSqr.forEach(column => {
         column.addEventListener('mouseenter', () => {
             column.style.background = 'black'; });
-    }});
+    document.addEventListener("mouseup", function() {
+        gridSqr.forEach(column => {
+            column.removeEventListener('mouseenter', () => {
+                column.style.background = 'black'; });
+                    })});
+})});
+    
 
     
     
@@ -61,4 +72,3 @@ gridSqr.forEach(column => {
             f.style.background = 'black';})
         })
         column.style.background = 'black'; })*/
-
