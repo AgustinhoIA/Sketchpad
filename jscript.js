@@ -57,13 +57,14 @@ document.addEventListener("mousedown", function() {
     gridSqr.forEach(column => {
         column.addEventListener('mouseenter', () => {
             column.style.background = 'black'; });
-    document.addEventListener("mouseup", function() {
-        gridSqr.forEach(column => {
-            column.removeEventListener('mouseenter', () => {
-                column.style.background = 'black'; });
-                    })});
-})});
     
+})});
+
+document.addEventListener("mouseup", function() {
+    gridSqr.forEach(column => {
+        column.removeEventListener('mouseenter', () => {
+            column.style.background = 'black'; });
+                })});
 
     
     
