@@ -12,7 +12,7 @@ let divs = 0;
 /* script to create the grid */
 
 
-function makeGrid() {
+function makeGrid(size) {
     while(divs < size) {
         console.log(size);
         const newDiv = document.createElement('div');
@@ -34,7 +34,14 @@ function makeGrid() {
 
     
 
-makeGrid()
+makeGrid(size)
+
+function replaceGrid(){
+    getGridSize();
+    cleanGrid();
+    makeGrid(size);
+}
+
 function cleanGrid(){
     const rowNode = document.querySelectorAll(".row")
     rowNode.forEach(row => {
@@ -43,13 +50,11 @@ function cleanGrid(){
 };
 
 function getGridSize() {
-    
     size = Number(window.prompt("Input number of squares on side grid", "32"));
-    makeGrid();
-    console.log
-    console.log("there should be a new grid")
 }
-document.getElementById("gridSizeBtn").addEventListener("click", function(){getGridSize()})
+
+
+document.getElementById("gridSizeBtn").addEventListener("click", function(){replaceGrid()})
 /* Here starts the drawing script */
 
 const gridSqr = document.querySelectorAll('.column');
