@@ -11,6 +11,7 @@ let divs = 0;
 
 /* script to create the grid */
 
+/* functions */
 
 function makeGrid(size) {
     while(divs < size) {
@@ -29,18 +30,8 @@ function makeGrid(size) {
         divs++;
         columns = 0
     } 
+    allowDrawing()
     return 0; 
-}  
-
-    
-
-makeGrid(size)
-
-function replaceGrid(){
-    getGridSize();
-    cleanGrid();
-    console.log(size);
-    makeGrid(size);
 }
 
 function cleanGrid(){
@@ -55,30 +46,40 @@ function getGridSize() {
     size = Number(window.prompt("Input number of squares on side grid", "32"));
 }
 
+function replaceGrid(){
+    getGridSize();
+    cleanGrid();
+    console.log(size);
+    makeGrid(size);
+}
+
+makeGrid(size)
 
 document.getElementById("gridSizeBtn").addEventListener("click", function(){replaceGrid()})
 /* Here starts the drawing script */
+function allowDrawing(){
+    const gridSqr = document.querySelectorAll('.column');
 
-const gridSqr = document.querySelectorAll('.column');
+    let mouseDown = false;
 
-let mouseDown = false;
-
-function handleMouseDown() {
-    mouseDown = true;
-}
-
-function handleMouseUp() {
-    mouseDown = false;
-}
-
-function handleMouseEnter (column) {
-    if (mouseDown) {
-        column.target.style.background = 'black'
+    function handleMouseDown() {
+        mouseDown = true;
     }
+
+    function handleMouseUp() {
+        mouseDown = false;
+    }
+
+    function handleMouseEnter (column) {
+        if (mouseDown) {
+            column.target.style.background = 'black'
+        }
+    }
+
+    gridSqr.forEach(column => {
+        column.addEventListener('mousedown', handleMouseDown);
+        column.addEventListener('mouseup', handleMouseUp);
+        column.addEventListener('mouseenter', handleMouseEnter);
+    })
 }
 
-gridSqr.forEach(column => {
-    column.addEventListener('mousedown', handleMouseDown);
-    column.addEventListener('mouseup', handleMouseUp);
-    column.addEventListener('mouseenter', handleMouseEnter);
-})
