@@ -29,19 +29,24 @@ function makeGrid() {
         divs++;
         columns = 0
     } 
-    return 0; }  
+    return 0; 
+}  
 
     
 
 makeGrid()
+function cleanGrid(){
+    const rowNode = document.querySelectorAll(".row")
+    rowNode.forEach(row => {
+        sketchpadFrame.removeChild(row)
+    });
+};
 
 function getGridSize() {
-    const rowNode = document.querySelectorAll(".row")
+    
     size = Number(window.prompt("Input number of squares on side grid", "32"));
     console.log(rowNode)
-    *rowNode.forEach(row => {
-        sketchpadFrame.removeChild(row)
-    })
+    *
     makeGrid();
     console.log
     console.log("there should be a new grid")
