@@ -1,6 +1,6 @@
 const sketchpadFrame = document.querySelector("#sketchpadFrame > .frame");
 const gridSizeBtn = document.querySelector("#gridSizeBtn")
-const rowNode = document.querySelectorAll(".row")
+
 
 const divRow = 0;
 const divcolumn = 0;
@@ -9,10 +9,8 @@ let columns = 0;
 let divs = 0;
 
 
-
-
 /* script to create the grid */
-document.getElementById("gridSizeBtn").addEventListener("click", function(){getGridSize()})
+
 
 function makeGrid() {
     while(divs < size) {
@@ -33,20 +31,22 @@ function makeGrid() {
     } 
     return 0; }  
 
-    function getGridSize() {
-        size = Number(window.prompt("Input number of squares on side grid", "32"));
-        console.log(size)
-        console.log(rowNode)
-        rowNode.forEach(row => {
-        remove(row);
-        console.log("it should work")
-       });
-        makeGrid();
-        console.log("there should be a new grid")
-    }
+    
 
 makeGrid()
- 
+
+function getGridSize() {
+    const rowNode = document.querySelectorAll(".row")
+    size = Number(window.prompt("Input number of squares on side grid", "32"));
+    console.log(rowNode)
+    *rowNode.forEach(row => {
+        sketchpadFrame.removeChild(row)
+    })
+    makeGrid();
+    console.log
+    console.log("there should be a new grid")
+}
+document.getElementById("gridSizeBtn").addEventListener("click", function(){getGridSize()})
 /* Here starts the drawing script */
 
 const gridSqr = document.querySelectorAll('.column');
