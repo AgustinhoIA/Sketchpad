@@ -1,35 +1,38 @@
 const sketchpadFrame = document.querySelector("#sketchpadFrame > .frame");
+const gridSizeBtn = document.querySelectorAll("#gridSizeBtn")
 
 const divRow = 0;
 const divcolumn = 0;
-let gridSize = 32;
+let size = 32
+let columns = 0;
+let divs = 0;
 
-/* function CreateRow {
-    const newDiv = document.createElement('div');
-    const currentRow = newDiv
-    current.classList.add('row');
-    newDiv.setAttribute('id', divRow);
-    newDiv
-}*/
-/* create a functions that creates the dives inside sketchpad frame
-        create a functions that create and adds a number of divs in display:block equal to user request number
-        inside those divs there needs to be a number of others divs in flex equal to user request number to create a grid
-            these square divs need to always remain equal in size, and create a perfect square
+function getGridSize() {
+    size = Number(window.prompt("Input number of squares on side grid", "32"));
+    makeGrid()
+    return size;
+}
 
-    once the grid works fine, the individual squares should change background color when hoover over.
 
-*/
+/* script to create the grid */
+document.getElementById("gridSizeBtn").addEventListener("click", function(){getGridSize()})
+
 function makeGrid() {
-    let columns = 0;
-    let divs = 0;
     
-    while(divs < gridSize) {
+    while (divs > 0) {
+        sketchpadFrame.removeChild('div')
+        divs--
+    }
+    while(divs < size) {
+        
+
+        console.log(size);
         const newDiv = document.createElement('div');
         newDiv.classList.add('row');
         newDiv.setAttribute('id', `a${divs}`);
         sketchpadFrame.appendChild(newDiv);
         const rowDiv = document.querySelector(`#a${divs}`);
-        while(columns < gridSize) {
+        while(columns < size) {
             const newCol = document.createElement('div');
             newCol.classList.add('column');
             rowDiv.appendChild(newCol);
@@ -40,36 +43,29 @@ function makeGrid() {
     } 
     return 0; }  
 makeGrid()
+ 
+/* Here starts the drawing script */
 
 const gridSqr = document.querySelectorAll('.column');
 
-let mouseDown = 0;
-document.body.addEventListener('mousedown', function() {
-    
-    console.log(mouseDown);
+let mouseDown = false;
+
+function handleMouseDown() {
+    mouseDown = true;
+}
+
+function handleMouseUp() {
+    mouseDown = false;
+}
+
+function handleMouseEnter (column) {
+    if (mouseDown) {
+        column.target.style.background = 'black'
+    }
+}
+
+gridSqr.forEach(column => {
+    column.addEventListener('mousedown', handleMouseDown);
+    column.addEventListener('mouseup', handleMouseUp);
+    column.addEventListener('mouseenter', handleMouseEnter);
 })
-document.body.addEventListener('mouseup', function() {
-    mouseDown = 0;
-    console.log(mouseDown);
-});
-
-document.addEventListener("mousedown", function() {
-    gridSqr.forEach(column => {
-        column.addEventListener('mouseenter', () => {
-            column.style.background = 'black'; });
-    
-})});
-
-document.addEventListener("mouseup", function() {
-    gridSqr.forEach(column => {
-        column.removeEventListener('mouseenter', () => {
-            column.style.background = 'black'; });
-                })});
-
-    
-    
-    /*column.addEventListener('click', function(e) {
-        e.addEventListener('mouseover', function(f) {
-            f.style.background = 'black';})
-        })
-        column.style.background = 'black'; })*/

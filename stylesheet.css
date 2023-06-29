@@ -13,6 +13,13 @@ body {
     min-width: 100px;
 }
 
+#gridSizeBtn {
+    width: 100px;
+    height: 40px;
+    border: solid salmon 2px;
+    background-color: whitesmoke;
+}
+
 #sketchpadFrame {
     box-sizing: border-box;
     display: flex;
@@ -51,4 +58,5 @@ body {
     box-sizing: border-box;
     height: 100%;
     width: 20%;
+    border: solid red 1px;
  }
