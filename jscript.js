@@ -39,6 +39,7 @@ makeGrid(size)
 function replaceGrid(){
     getGridSize();
     cleanGrid();
+    console.log(size);
     makeGrid(size);
 }
 
@@ -47,6 +48,7 @@ function cleanGrid(){
     rowNode.forEach(row => {
         sketchpadFrame.removeChild(row)
     });
+    divs = 0
 };
 
 function getGridSize() {
