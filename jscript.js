@@ -45,8 +45,6 @@ function cleanGrid(){
 function getGridSize() {
     
     size = Number(window.prompt("Input number of squares on side grid", "32"));
-    console.log(rowNode)
-    *
     makeGrid();
     console.log
     console.log("there should be a new grid")
