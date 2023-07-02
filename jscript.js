@@ -1,15 +1,24 @@
+/* some constants and variable on global scope */
 const sketchpadFrame = document.querySelector("#sketchpadFrame > .frame");
 const gridSizeBtn = document.querySelector("#gridSizeBtn")
 
-
-const divRow = 0;
-const divcolumn = 0;
 let size = 32
 let columns = 0;
 let divs = 0;
+let color = "black";
+let iterateRaimbow = 0;
+let raimbow = false;
 
+var rainbowColors = [
+    "#FF0000",  // Red
+    "#FFA500",  // Orange
+    "#FFFF00",  // Yellow
+    "#00FF00",  // Green
+    "#0000FF",  // Blue
+    "#4B0082",  // Indigo
+    "#EE82EE"   // Violet
+];
 
-/* script to create the grid */
 
 /* functions */
 
@@ -53,10 +62,6 @@ function replaceGrid(){
     makeGrid(size);
 }
 
-makeGrid(size)
-
-document.getElementById("gridSizeBtn").addEventListener("click", function(){replaceGrid()})
-/* Here starts the drawing script */
 function allowDrawing(){
     const gridSqr = document.querySelectorAll('.column');
 
@@ -72,10 +77,19 @@ function allowDrawing(){
 
     function handleMouseEnter (column) {
         if (mouseDown) {
-            column.target.style.background = 'black'
-        }
+            if (raimbow == false) {
+            column.target.style.background = color;
+            } else if (raimbow == true) {
+                if (iterateRaimbow <= 6) {
+                    color = rainbowColors[iterateRaimbow];
+                    ++iterateRaimbow;
+                } else  {
+                    iterateRaimbow = 0;
+                }
+                column.target.style.background = color;
+            }
+        }  
     }
-
     gridSqr.forEach(column => {
         column.addEventListener('mousedown', handleMouseDown);
         column.addEventListener('mouseup', handleMouseUp);
@@ -83,3 +97,19 @@ function allowDrawing(){
     })
 }
 
+function allowRaimbow() {
+    if (raimbow == true) {
+        raimbow = false
+    } else if (raimbow == false) [
+        raimbow = true
+    ]
+}
+
+/* main script */
+makeGrid(size)
+
+document.getElementById("gridSizeBtn").addEventListener("click", function(){replaceGrid()})
+document.getElementById("raimbowMode").addEventListener("click", function(){allowRaimbow()} )
+document.querySelector(".row > div").addEventListener("mouseenter", function(){}
+
+})
