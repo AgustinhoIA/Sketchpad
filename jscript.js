@@ -107,6 +107,7 @@ function raimbowcolors() {
 function allowRaimbow() {
     if (raimbow == true) {
         raimbow = false
+        color = "black"
     } else if (raimbow == false) [
         raimbow = true
     ]
