@@ -2,6 +2,7 @@
 const sketchpadFrame = document.querySelector("#sketchpadFrame > .frame");
 const gridSizeBtn = document.querySelector("#gridSizeBtn")
 
+
 let size = 32
 let columns = 0;
 let divs = 0;
@@ -22,7 +23,7 @@ var rainbowColors = [
 
 /* functions */
 
-function makeGrid(size) {
+function makeGrid(size) { /* this functions creates a grid of divs inside .frame in a dinamic way */
     while(divs < size) {
         console.log(size);
         const newDiv = document.createElement('div');
@@ -43,7 +44,7 @@ function makeGrid(size) {
     return 0; 
 }
 
-function cleanGrid(){
+function cleanGrid(){ 
     const rowNode = document.querySelectorAll(".row")
     rowNode.forEach(row => {
         sketchpadFrame.removeChild(row)
@@ -55,10 +56,9 @@ function getGridSize() {
     size = Number(window.prompt("Input number of squares on side grid", "32"));
 }
 
-function replaceGrid(){
+function replaceGrid(){ /* ask user for new grid size, removes old grid, creates new grid */
     getGridSize();
     cleanGrid();
-    console.log(size);
     makeGrid(size);
 }
 
@@ -75,16 +75,18 @@ function allowDrawing(){
         mouseDown = false;
     }
 
-    function handleMouseEnter (column) {
+    function handleMouseEnter(column) {
         if (mouseDown) {
             if (raimbow == false) {
-            column.target.style.background = color;
-            } else if (raimbow == true) {
+                column.target.style.background = color;
+            } else if ( raimbow == true) {
                 if (iterateRaimbow <= 6) {
                     color = rainbowColors[iterateRaimbow];
                     ++iterateRaimbow;
                 } else  {
                     iterateRaimbow = 0;
+                    color = rainbowColors[iterateRaimbow];
+                    ++iterateRaimbow
                 }
                 column.target.style.background = color;
             }
@@ -95,6 +97,11 @@ function allowDrawing(){
         column.addEventListener('mouseup', handleMouseUp);
         column.addEventListener('mouseenter', handleMouseEnter);
     })
+}
+
+function raimbowcolors() {
+    
+
 }
 
 function allowRaimbow() {
@@ -110,6 +117,11 @@ makeGrid(size)
 
 document.getElementById("gridSizeBtn").addEventListener("click", function(){replaceGrid()})
 document.getElementById("raimbowMode").addEventListener("click", function(){allowRaimbow()} )
-document.querySelector(".row > div").addEventListener("mouseenter", function(){}
-
-})
+/*document.gridSqr.addEventListener("mouseover", function(event) {
+    if (raimbow == true) {
+        if (target.event.matches(".grid-item")) {
+            event.target.style.backgroundColor = raimbowcolors();
+            }
+        }
+    }
+)*/
