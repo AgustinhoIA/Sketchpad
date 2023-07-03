@@ -99,11 +99,6 @@ function allowDrawing(){
     })
 }
 
-function raimbowcolors() {
-    
-
-}
-
 function allowRaimbow() {
     if (raimbow == true) {
         raimbow = false
