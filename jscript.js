@@ -62,7 +62,7 @@ function replaceGrid(){ /* ask user for new grid size, removes old grid, creates
     makeGrid(size);
 }
 
-function allowDrawing(){
+function allowDrawing(){ /* function to only draw when mouse is down */
     const gridSqr = document.querySelectorAll('.column');
 
     let mouseDown = false;
@@ -113,11 +113,4 @@ makeGrid(size)
 
 document.getElementById("gridSizeBtn").addEventListener("click", function(){replaceGrid()})
 document.getElementById("raimbowMode").addEventListener("click", function(){allowRaimbow()} )
-/*document.gridSqr.addEventListener("mouseover", function(event) {
-    if (raimbow == true) {
-        if (target.event.matches(".grid-item")) {
-            event.target.style.backgroundColor = raimbowcolors();
-            }
-        }
-    }
-)*/
+
